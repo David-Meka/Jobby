@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobby/core/constants/app_colors.dart';
+import 'package:jobby/core/theme/app_colors.dart';
 // import 'app_colors.dart'; // Import the AppColors class
 
 class AppTheme {
@@ -10,10 +10,8 @@ class AppTheme {
     colorScheme: ColorScheme.light(
       primary: AppColors.primaryLight,
       secondary: AppColors.accentLight,
-      // background: AppColors.backgroundLight,
       surface: Colors.white,
       onSurface: AppColors.primaryTextLight,
-      // onBackground: AppColors.primaryTextLight,
       onPrimary: Colors.white,
       onSecondary: Colors.white,
     ),
@@ -34,8 +32,9 @@ class AppTheme {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.primaryLight,
-      titleTextStyle: TextStyle(color: Colors.white),
+      // backgroundColor: AppColors.primaryLight,
+      backgroundColor: AppColors.backgroundLight,
+      titleTextStyle: TextStyle(color: Colors.black),
       elevation: 0,
     ),
   );
@@ -71,7 +70,7 @@ class AppTheme {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.primaryLight,
+      backgroundColor: AppColors.backgroundDark,
       titleTextStyle: TextStyle(color: Colors.white),
       elevation: 0,
     ),
