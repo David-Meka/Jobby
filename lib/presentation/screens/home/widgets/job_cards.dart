@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jobby/core/models/job.dart';
 import 'package:jobby/core/theme/app_colors.dart';
 import 'package:jobby/core/theme/app_textStyles.dart';
 import 'package:jobby/core/theme/spacing.dart';
+import 'package:jobby/presentation/screens/saved%20jobs/cubit/saved_jobs_cubit.dart';
 
 class JobCards extends StatelessWidget {
   final Job job;
@@ -50,11 +52,40 @@ class JobCards extends StatelessWidget {
               ),
               const Spacer(),
               IconButton(
-                onPressed: () {},
                 icon: Icon(
-                  Icons.bookmark_add,
-                  color: Theme.of(context).iconTheme.color,
+                  context.watch<SavedJobsCubit>().isSaved(job)
+                      ? Icons.bookmark
+                      : Icons.bookmark_border,
                 ),
+                onPressed: () {
+                  final cubit = context.read<SavedJobsCubit>();
+                  final isSaved = cubit.isSaved(job);
+
+                  if (isSaved) {
+                    cubit.removeJob(job);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: AppColors.fail,
+                        content: Text(
+                          'Job removed from saved jobs',
+                          style: AppTextStyles.label.copyWith(
+                            color: AppColors.backgroundLight,
+                          ),
+                        ),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  } else {
+                    cubit.saveJob(job);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: AppColors.accentLight,
+                        content: Text('Job saved successfully'),
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
+                  }
+                },
               ),
             ],
           ),

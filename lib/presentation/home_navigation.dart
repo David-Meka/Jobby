@@ -6,6 +6,7 @@ import 'package:jobby/presentation/bloc/job_bloc.dart';
 import 'package:jobby/presentation/bloc/job_event.dart';
 // import 'package:flutter_svg/svg.dart';
 import 'package:jobby/presentation/screens/home/home.dart';
+import 'package:jobby/presentation/screens/saved%20jobs/cubit/saved_jobs_cubit.dart';
 import 'package:jobby/presentation/screens/saved%20jobs/savede_jobs_view.dart';
 
 class HomeNavigation extends StatefulWidget {
@@ -32,27 +33,43 @@ class _HomeNavigationState extends State<HomeNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => JobsBloc(apiService: ApiService())..add(FetchJobsEvent()),
-      child: Scaffold(
-        body: homeScreen[_currentIndex],
-
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: _onTabTapped,
-          items: [
-            BottomNavigationBarItem(
-              // icon: Icon(Icons.home_rounded),
-              icon: SvgPicture.asset('assets/svgs/home.svg'),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              // icon: SvgPicture.asset('android/images/svgs/saved.svg'),
-              icon: Icon(Icons.bookmark_border_outlined),
-              label: 'Saved',
-            ),
-          ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create:
+              (_) => JobsBloc(apiService: ApiService())..add(FetchJobsEvent()),
         ),
+        BlocProvider(create: (_) => SavedJobsCubit()),
+      ],
+      child: Builder(
+        builder: (context) {
+          return Scaffold(
+            body: homeScreen[_currentIndex],
+
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: _currentIndex,
+              onTap: _onTabTapped,
+              items: [
+                BottomNavigationBarItem(
+                  // icon: Icon(Icons.home_rounded),
+                  icon:
+                      _currentIndex == 0
+                          ? Icon(Icons.home)
+                          : Icon(Icons.home_outlined),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  // icon: SvgPicture.asset('android/images/svgs/saved.svg'),
+                  icon:
+                      _currentIndex == 1
+                          ? Icon(Icons.bookmark)
+                          : Icon(Icons.bookmark_border_outlined),
+                  label: 'Saved',
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

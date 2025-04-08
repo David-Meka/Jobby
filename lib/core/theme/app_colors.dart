@@ -16,4 +16,5 @@ class AppColors {
     0xFFE0E0E0,
   ); // Primary Text (Light Gray)
   static const Color secondaryTextDark = Color(0xFFBDBDBD);
+  static const Color fail = Color.fromARGB(255, 235, 17, 17);
 }

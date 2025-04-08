@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jobby/core/theme/app_textStyles.dart';
 import 'package:jobby/presentation/bloc/job_bloc.dart';
 import 'package:jobby/presentation/bloc/job_state.dart';
@@ -11,8 +12,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Job Listings', style: AppTextStyles.sectionTitle),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100.h),
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(16.sp),
+            child: Text('Job Listings', style: AppTextStyles.sectionTitle),
+          ),
+        ),
       ),
       body: BlocBuilder<JobsBloc, JobsState>(
         builder: (context, state) {

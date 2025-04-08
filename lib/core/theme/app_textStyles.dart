@@ -10,8 +10,8 @@ class AppTextStyles {
   );
 
   // Job Title (e.g. Software Engineer)
-  static const TextStyle jobTitle = TextStyle(
-    fontSize: 18,
+  static TextStyle jobTitle = TextStyle(
+    fontSize: 16.sp,
     fontWeight: FontWeight.w600,
   );
 
