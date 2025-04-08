@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:jobby/core/service/api_service.dart';
-import 'package:jobby/presentation/bloc/job_bloc.dart';
-import 'package:jobby/presentation/bloc/job_event.dart';
-// import 'package:flutter_svg/svg.dart';
 import 'package:jobby/presentation/screens/home/home.dart';
-import 'package:jobby/presentation/screens/saved%20jobs/cubit/saved_jobs_cubit.dart';
 import 'package:jobby/presentation/screens/saved%20jobs/savede_jobs_view.dart';
 
 class HomeNavigation extends StatefulWidget {

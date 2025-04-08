@@ -5,6 +5,7 @@ import 'package:jobby/core/models/job.dart';
 import 'package:jobby/core/theme/app_colors.dart';
 import 'package:jobby/core/theme/app_textStyles.dart';
 import 'package:jobby/core/theme/spacing.dart';
+import 'package:jobby/presentation/screens/home/widgets/job_description.dart';
 import 'package:jobby/presentation/screens/saved%20jobs/cubit/saved_jobs_cubit.dart';
 
 class JobCards extends StatelessWidget {
@@ -17,6 +18,18 @@ class JobCards extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(10.sp),
       child: GestureDetector(
+        onTap: () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            ),
+            builder: (context) => JobDescriptionSheet(job: job),
+          );
+        },
+
         child: Container(
           padding: EdgeInsets.all(10.sp),
           width: 350.w,
