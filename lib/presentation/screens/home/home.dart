@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jobby/core/theme/app_textStyles.dart';
+import 'package:jobby/core/theme/cubit/theme_cubit.dart';
 import 'package:jobby/presentation/bloc/job_bloc.dart';
 import 'package:jobby/presentation/bloc/job_state.dart';
 import 'package:jobby/presentation/screens/home/widgets/job_cards.dart';
@@ -11,13 +12,26 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100.h),
         child: SafeArea(
           child: Padding(
             padding: EdgeInsets.all(16.sp),
-            child: Text('Job Listings', style: AppTextStyles.sectionTitle),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Job Listings', style: AppTextStyles.sectionTitle),
+                IconButton(
+                  onPressed: () => context.read<ThemeCubit>().toggleTheme(),
+                  icon: Icon(
+                    isDark ? Icons.wb_sunny_outlined : Icons.nightlight_round,
+                    size: 24.sp,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
