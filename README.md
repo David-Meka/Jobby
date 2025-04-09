@@ -1,16 +1,25 @@
-# jobby
+# Jobby
 
-A new Flutter project.
+Jobby is a Flutter-based job listing app designed to help users browse, save, and explore job opportunities with ease. It follows clean architecture principles and leverages modern Flutter development tools for maintainability and scalability.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Search and view job listings
+- Save jobs for later access
+- Toggle between light and dark themes
+- View full job descriptions
+- Clean and modular codebase
+- Built with BLoC, Dio, and Freezed
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter
+- BLoC (Business Logic Component)
+- Dio (HTTP Client)
+- Freezed (Modeling and immutability)
+- ThemeData (Dynamic theming)
+- Mock API (Used for demonstration)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## App Views
+![App light theme](assets/app_screenshots/light_mode.png)
+
