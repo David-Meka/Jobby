@@ -10,6 +10,7 @@ import 'package:jobby/presentation/home_navigation.dart';
 import 'package:jobby/presentation/screens/saved%20jobs/cubit/saved_jobs_cubit.dart';
 
 void main() {
+  
   runApp(
     MultiBlocProvider(
       providers: [
