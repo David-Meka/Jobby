@@ -24,7 +24,8 @@ Jobby is a Flutter-based job listing app designed to help users browse, save, an
 
 <p align="center">
   <img src="assets\app_screenshots\light_mode.png" width="200" />
-  <img src="screenshots/screenshot2.png" width="200" /> 
-  <img src="screenshots/screenshot3.png" width="200" />
+  <img src="assets\app_screenshots\dark_mode.png" width="200" /> 
+  <img src="assets\app_screenshots\job_description.png" width="200" />
+  <img src="assets\app_screenshots\saved_jobs.png" width="200" />
 </p>
 
